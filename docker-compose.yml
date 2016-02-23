@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  voting-app:
+    image: docker/example-voting-app-voting-app
+    ports:
+      - "80"
+  result-app:
+    image: docker/example-voting-app-result-app
+    ports:
+      - "80"
+  worker:
+    image: docker/example-voting-app-worker
+  redis:
+    image: redis
+    ports:
+      - "6379"
+    container_name: redis
+  db:
+    image: postgres:9.4
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    container_name: db
+volumes:
+    db-data:
