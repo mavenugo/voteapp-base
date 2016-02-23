@@ -13,13 +13,9 @@ services:
     image: docker/example-voting-app-worker
   redis:
     image: redis
-    ports:
-      - "6379"
-    container_name: redis
   db:
     image: postgres:9.4
     volumes:
       - "db-data:/var/lib/postgresql/data"
-    container_name: db
 volumes:
     db-data:
