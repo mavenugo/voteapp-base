@@ -5,17 +5,30 @@ services:
     image: docker/example-voting-app-voting-app
     ports:
       - "80"
+    networks:
+      - votenet
   result-app:
     image: docker/example-voting-app-result-app
     ports:
       - "80"
+    networks:
+      - votenet
   worker:
     image: docker/example-voting-app-worker
+    networks:
+      - votenet
   redis:
     image: redis
+    networks:
+      - votenet
   db:
     image: postgres:9.4
     volumes:
       - "db-data:/var/lib/postgresql/data"
+    networks:
+      - votenet
 volumes:
-    db-data:
+  db-data:
+
+networks:
+  votenet:
